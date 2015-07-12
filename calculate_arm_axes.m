@@ -3,7 +3,15 @@
 % Calculates a 7DOF model based on the
 % routines described in Biryukova.
 % INPUT:
-% calibration_data
+% calibration_data struct:
+%       .wrist_abduction
+%       .wrist_flexion
+%       .elbow_pronation
+%       .elbow_flexion
+%       .shoulder
+%       containing the 6D data from the four markers attached to the
+%       arm performing passive movements.
+% p = plot results { default: false }
 % OUTPUT:
 % model = structure with all axis specifications
 % SIDEEFFECTS:

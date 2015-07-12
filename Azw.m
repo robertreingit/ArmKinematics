@@ -4,7 +4,8 @@
 % attached to a skew axis according to
 % Prokopenko et al. (2001) p.183
 % INPUT:
-% z = local vector from marker to axis
+% z     = vector in LCS from the marker attached to the segment to 
+%         the axis.
 % omega = axis direction vector
 % OUTPUT:
 % A = orientation of coordinate system e RO(3)
@@ -28,8 +29,7 @@ end
 % fast_cross
 % cross product function
 % optimized for 3d vectors and normalizes
-% s
-% s = u x v
+% s = u x v if necessary.
 % INPUT:
 % u = vector e R^3
 % v = vector e R^3
@@ -44,6 +44,8 @@ function s = fast_cross(u,v)
     s(1) = u(2)*v(3) - u(3)*v(2);
     s(2) = u(3)*v(1) - u(1)*v(3);
     s(3) = u(1)*v(2) - u(2)*v(1);
-    s = s / sqrt(s'*s);
+    if abs(norm(s)-1.0) < 10*eps
+        s = s / sqrt(s'*s);
+    end
         
 end
